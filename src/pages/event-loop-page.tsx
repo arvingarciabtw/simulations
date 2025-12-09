@@ -1,10 +1,9 @@
-import { Link } from "react-router";
+import ComingSoon from "../components/coming-soon";
 
 function EventLoopPage() {
 	return (
 		<>
-			<p>At the event loop page...</p>
-			<Link to="/">Go back to home...</Link>
+			<ComingSoon simulationName={"event loop simulation"} />
 		</>
 	);
 }

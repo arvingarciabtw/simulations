@@ -1,10 +1,9 @@
-import { Link } from "react-router";
+import ComingSoon from "../components/coming-soon";
 
 function CMAPage() {
 	return (
 		<>
-			<p>At the CMA page...</p>
-			<Link to="/">Go back to home...</Link>
+			<ComingSoon simulationName={"contiguous memory allocation simulation"} />
 		</>
 	);
 }

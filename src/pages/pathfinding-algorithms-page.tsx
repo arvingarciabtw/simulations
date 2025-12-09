@@ -1,10 +1,9 @@
-import { Link } from "react-router";
+import ComingSoon from "../components/coming-soon";
 
 function PathfindingAlgorithmsPage() {
 	return (
 		<>
-			<p>At the pathfinding algorithms page...</p>
-			<Link to="/">Go back to home...</Link>
+			<ComingSoon simulationName={"pathfinding algorithms simulation"} />
 		</>
 	);
 }

@@ -1,10 +1,9 @@
-import { Link } from "react-router";
+import ComingSoon from "../components/coming-soon";
 
 function SortingAlgorithmsPage() {
 	return (
 		<>
-			<p>At the sorting algorithms page...</p>
-			<Link to="/">Go back to home...</Link>
+			<ComingSoon simulationName={"sorting algorithms simulation"} />
 		</>
 	);
 }

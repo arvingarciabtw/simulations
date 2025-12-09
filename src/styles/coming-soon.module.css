@@ -1,0 +1,28 @@
+.main {
+	display: grid;
+	place-content: center;
+	justify-items: center;
+}
+
+.title {
+	color: var(--color-primary);
+}
+
+.description {
+	max-width: 400px;
+	text-align: center;
+}
+
+.back {
+	padding: 0.75em 1.25em;
+	margin-top: 1rem;
+	background: var(--color-bg-alt);
+	color: var(--color-fg);
+	border-radius: 16px;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.back:hover {
+	color: var(--color-primary);
+}
