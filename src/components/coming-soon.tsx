@@ -1,9 +1,6 @@
 import styles from "../styles/coming-soon.module.css";
 import { Link } from "react-router";
-
-interface ComingSoon {
-	simulationName: string;
-}
+import type { ComingSoon } from "../types/coming-soon.model";
 
 function ComingSoon({ simulationName = "simulation" }: ComingSoon) {
 	return (
