@@ -1,16 +1,66 @@
+import styles from "../styles/home-page.module.css";
 import { Link } from "react-router";
+import type { Simulation } from "../types/simulation.model";
 
 function HomePage() {
 	return (
 		<>
-			<p>At the home page...</p>
-			<Link to="/contiguous-memory-allocation">Go to the CMA page...</Link>
-			<Link to="/event-loop">Go to the event loop page...</Link>
-			<Link to="/sorting-algorithms">Go to the sorting algorithms page...</Link>
-			<Link to="/pathfinding-algorithms">
-				Go to the pathfinding algorithms page...
-			</Link>
+			<header className="maxWidthWrapper">
+				<div className={styles.logo}></div>
+			</header>
+			<main className={`maxWidthWrapper ${styles.main}`}>
+				<Description />
+				<Simulations />
+			</main>
+			<footer className="maxWidthWrapper">
+				Made by{" "}
+				<a
+					href="https://github.com/arvingarciabtw/simulations"
+					target="_blank"
+					rel="noopener noreferrer"
+					className="developer"
+				>
+					@arvingarciabtw
+				</a>
+			</footer>
 		</>
+	);
+}
+
+function Simulations() {
+	return (
+		<section className={styles.simulations}>
+			<Simulation
+				link="/contiguous-memory-allocation"
+				name="Contiguous Memory Allocation"
+			/>
+			<Simulation link="/event-loop" name="Event Loop" />
+			<Simulation link="/sorting-algorithms" name="Sorting Algorithms" />
+			<Simulation
+				link="/pathfinding-algorithms"
+				name="Pathfinding Algorithms"
+			/>
+		</section>
+	);
+}
+
+function Simulation({ link, name }: Simulation) {
+	return (
+		<Link to={link} className={styles.simulation}>
+			{name}
+		</Link>
+	);
+}
+
+function Description() {
+	return (
+		<section className={`maxWidthWrapper ${styles.description}`}>
+			<h1 className={styles.title}>Simulations</h1>
+			<p>
+				A collection of simulations and visualizers of various programming
+				concepts.
+			</p>
+		</section>
 	);
 }
 

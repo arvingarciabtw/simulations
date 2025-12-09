@@ -1,0 +1,40 @@
+.logo {
+	width: 36px;
+	aspect-ratio: 1 / 1;
+	background: var(--color-primary);
+	border-radius: 50%;
+}
+
+.description {
+	margin-bottom: 2rem;
+}
+
+.title {
+	margin-bottom: 0.25rem;
+	font-weight: var(--weight-semi-bold);
+}
+
+.simulation {
+	display: block;
+	width: fit-content;
+	text-decoration: none;
+	color: var(--color-gray);
+	will-change: transform;
+	transition:
+		transform 0.3s ease-out,
+		color 0.2s ease;
+}
+
+.simulation:hover {
+	transform: translateX(6px);
+	color: var(--color-primary);
+}
+
+.simulation:not(:last-of-type) {
+	margin-bottom: 0.5rem;
+}
+
+.simulation::before {
+	margin-right: 0.5rem;
+	content: "//";
+}

@@ -63,3 +63,124 @@ h6 {
 #__next {
 	isolation: isolate;
 }
+
+/* == FONTS == */
+
+/* -- Atkinson Hyperlegible Next -- */
+
+@font-face {
+	font-family: "Atkinson Hyperlegible Next";
+	font-style: italic;
+	font-weight: 200 800;
+	src: url(/fonts/AtkinsonHyperlegibleNext-Italic-VariableFont_wght.woff2)
+		format("woff2");
+	unicode-range:
+		U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+		U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+		U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+	font-family: "Atkinson Hyperlegible Next";
+	font-style: italic;
+	font-weight: 200 800;
+	src: url(/fonts/AtkinsonHyperlegibleNext-Italic-VariableFont_wght.woff2)
+		format("woff2");
+	unicode-range:
+		U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+		U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+		U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+	font-family: "Atkinson Hyperlegible Next";
+	font-style: normal;
+	font-weight: 200 800;
+	src: url(/fonts/AtkinsonHyperlegibleNext-VariableFont_wght.woff2)
+		format("woff2");
+	unicode-range:
+		U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+		U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+		U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+	font-family: "Atkinson Hyperlegible Next";
+	font-style: normal;
+	font-weight: 200 800;
+	src: url(/fonts/AtkinsonHyperlegibleNext-VariableFont_wght.woff2)
+		format("woff2");
+	unicode-range:
+		U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+		U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+		U+2215, U+FEFF, U+FFFD;
+}
+
+/* == COLORS == */
+
+html {
+	--color-bg: oklch(0.1822 0 0);
+	--color-bg-alt: oklch(0.235 0 0);
+	--color-fg: oklch(0.982 0.0041 91.45);
+	--color-primary: oklch(0.7794 0.1529 311.29);
+	--color-gray: oklch(0.6764 0 0);
+	--color-dark-gray: oklch(0.4891 0 0);
+	--color-light-gray: oklch(0.7636 0 0);
+
+	--weight-extra-light: 200;
+	--weight-light: 300;
+	--weight-regular: 400;
+	--weight-medium: 500;
+	--weight-semi-bold: 600;
+	--weight-bold: 700;
+	--weight-extra-bold: 800;
+}
+
+/* == GENERAL == */
+
+.maxWidthWrapper {
+	margin: auto;
+	max-width: 1000px;
+}
+
+* {
+	font-family: "Atkinson Hyperlegible Next", sans-serif;
+}
+
+body {
+	background: var(--color-bg);
+	color: var(--color-fg);
+	height: 100svh;
+}
+
+#root {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
+
+header {
+	padding: 1.5rem 1.5rem 0;
+	width: 100%;
+}
+
+main {
+	padding: 1.5rem;
+	width: 100%;
+	flex: 1;
+}
+
+footer {
+	padding: 1.5rem;
+	text-align: center;
+}
+
+footer > a.developer {
+	text-decoration: none;
+	color: var(--color-primary);
+	cursor: pointer;
+}
+
+footer > a.developer:hover {
+	text-decoration: underline;
+}
