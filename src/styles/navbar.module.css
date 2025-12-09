@@ -1,0 +1,22 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}
+
+.logo {
+	width: 36px;
+	aspect-ratio: 1 / 1;
+	background: var(--color-primary);
+	border-radius: 50%;
+}
+
+.home {
+	color: var(--color-fg);
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.home:hover {
+	color: var(--color-primary);
+}

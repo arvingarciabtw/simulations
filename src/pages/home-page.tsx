@@ -1,6 +1,7 @@
 import styles from "../styles/home-page.module.css";
 import { Link } from "react-router";
 import type { Simulation } from "../types/simulation.model";
+import Footer from "../components/footer";
 
 function HomePage() {
 	return (
@@ -12,17 +13,7 @@ function HomePage() {
 				<Description />
 				<Simulations />
 			</main>
-			<footer className="maxWidthWrapper">
-				Made by{" "}
-				<a
-					href="https://github.com/arvingarciabtw/simulations"
-					target="_blank"
-					rel="noopener noreferrer"
-					className="developer"
-				>
-					@arvingarciabtw
-				</a>
-			</footer>
+			<Footer />
 		</>
 	);
 }
