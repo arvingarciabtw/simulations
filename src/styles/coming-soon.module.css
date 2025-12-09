@@ -9,8 +9,9 @@
 }
 
 .description {
-	max-width: 400px;
+	max-width: 320px;
 	text-align: center;
+	color: var(--color-gray);
 }
 
 .back {
@@ -20,9 +21,9 @@
 	color: var(--color-fg);
 	border-radius: 16px;
 	text-decoration: none;
-	transition: color 0.3s ease;
+	transition: opacity 0.3s ease;
 }
 
 .back:hover {
-	color: var(--color-primary);
+	opacity: 0.75;
 }
