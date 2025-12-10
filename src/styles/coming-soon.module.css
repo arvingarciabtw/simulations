@@ -6,6 +6,7 @@
 
 .title {
 	color: var(--color-primary);
+	font-weight: var(--weight-semi-bold);
 }
 
 .description {
