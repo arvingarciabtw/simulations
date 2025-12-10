@@ -15,6 +15,10 @@
 }
 
 .simulation {
+	text-decoration: none;
+}
+
+.simulationContents {
 	display: block;
 	width: fit-content;
 	text-decoration: none;
@@ -25,16 +29,17 @@
 		color 0.2s ease;
 }
 
-.simulation:hover {
+.simulation:hover .simulationContents {
 	transform: translateX(6px);
 	color: var(--color-primary);
 }
 
 .simulation:not(:last-of-type) {
+	display: block;
 	margin-bottom: 0.5rem;
 }
 
-.simulation::before {
+.simulationContents::before {
 	margin-right: 0.5rem;
 	content: "//";
 }

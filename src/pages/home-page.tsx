@@ -37,8 +37,16 @@ function Simulations() {
 
 function Simulation({ link, name }: Simulation) {
 	return (
+		/*
+      While this looks a bit weird, the component is structured like
+      this to prevent 'doom flicker'. Essentially, when the Link is
+      hovered, the transform is applied on the span, preventing the
+      issue. The link below shows a demo of said issue:
+
+      https://www.joshwcomeau.com/animation/css-transitions/
+    */
 		<Link to={link} className={styles.simulation}>
-			{name}
+			<span className={styles.simulationContents}>{name}</span>
 		</Link>
 	);
 }
