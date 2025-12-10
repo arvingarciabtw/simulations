@@ -1,4 +1,63 @@
 .main {
+	min-height: 600px;
+	display: grid;
+	grid-template-areas:
+		"algorithms players    players simulation"
+		"processes  parameters parameters simulation"
+		"processes  chart      chart   simulation";
+	grid-template-columns: 300px 1fr 80px 300px;
+	grid-template-rows: 80px 160px 1fr;
+	gap: 1rem;
+}
+
+.main > section {
 	display: grid;
 	place-content: center;
+	color: var(--color-gray);
+}
+
+.algorithms,
+.processes,
+.parameters,
+.players,
+.simulation,
+.chart {
+	border: 2px dashed var(--color-dark-gray);
+	background: var(--color-bg-alt);
+}
+
+.algorithms {
+	grid-area: algorithms;
+}
+
+.processes {
+	grid-area: processes;
+}
+
+.parameters {
+	grid-area: parameters;
+}
+
+.players {
+	grid-area: players;
+}
+
+.simulation {
+	grid-area: simulation;
+}
+
+.chart {
+	grid-area: chart;
+}
+
+@media (max-width: 900px) {
+	.main {
+		grid-template-areas: none;
+		grid-template-columns: 1fr;
+		grid-template-rows: auto;
+	}
+
+	.main > section {
+		grid-area: auto;
+	}
 }
