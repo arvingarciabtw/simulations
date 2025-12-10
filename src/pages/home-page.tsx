@@ -6,15 +6,27 @@ import Footer from "../components/footer";
 function HomePage() {
 	return (
 		<>
-			<header className="maxWidthWrapper">
-				<div className={styles.logo}></div>
-			</header>
-			<main className={`maxWidthWrapper ${styles.main}`}>
-				<Description />
-				<Simulations />
-			</main>
+			<Header />
+			<Main />
 			<Footer />
 		</>
+	);
+}
+
+function Header() {
+	return (
+		<header className="maxWidthWrapper">
+			<div className={styles.logo}></div>
+		</header>
+	);
+}
+
+function Main() {
+	return (
+		<main className={`maxWidthWrapper ${styles.main}`}>
+			<Description />
+			<Simulations />
+		</main>
 	);
 }
 
