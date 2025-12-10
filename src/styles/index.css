@@ -136,6 +136,13 @@ html {
 	--weight-extra-bold: 800;
 }
 
+/* == SELECTION == */
+
+::selection {
+	background: var(--color-bg-alt);
+	color: var(--color-primary);
+}
+
 /* == GENERAL == */
 
 .maxWidthWrapper {
