@@ -2,8 +2,10 @@ import styles from "../styles/contiguous-memory-allocation.module.css";
 import Footer from "../components/footer";
 import NavBar from "../components/navbar";
 import Information from "../components/information";
+import type { Process } from "../types/process.model";
 import { Select } from "radix-ui";
 import { ChevronDown, Trash2, Play, FastForward } from "react-feather";
+import { useState } from "react";
 
 function CMAPage() {
 	return (
@@ -72,8 +74,20 @@ function Algorithms() {
 }
 
 function Processes() {
+	const [placeholderData, setPlaceholderData] = useState([
+		{ name: "Process 1", size: 100, time: 5 },
+		{ name: "Process 2", size: 200, time: 2 },
+		{ name: "Process 3", size: 300, time: 4 },
+		{ name: "Process 4", size: 400, time: 8 },
+		{ name: "Process 5", size: 500, time: 9 },
+		{ name: "Process 6", size: 600, time: 1 },
+		{ name: "Process 7", size: 700, time: 1 },
+		{ name: "Process 8", size: 800, time: 3 },
+		{ name: "Process 9", size: 900, time: 6 },
+		{ name: "Process 10", size: 950, time: 4 },
+	]);
 	return (
-		<section className={styles.processes}>
+		<section className={styles.processesGridArea}>
 			<div className={styles.processesContainer}>
 				<div className={styles.processHeader}>
 					<p>Name</p>
@@ -81,16 +95,31 @@ function Processes() {
 					<p>Time</p>
 				</div>
 				<div className={styles.separator}></div>
-				<div className={styles.process}>
-					<p>Process 1</p>
-					<p>100</p>
-					<p>5</p>
-					<button className={styles.btnDeleteProcess}>
-						<Trash2 />
-					</button>
+				<div className={styles.processes}>
+					{placeholderData.map((el) => (
+						<Process
+							key={el.name}
+							name={el.name}
+							size={el.size}
+							time={el.time}
+						/>
+					))}
 				</div>
 			</div>
 		</section>
+	);
+}
+
+function Process({ name, size, time }: Process) {
+	return (
+		<div className={styles.process}>
+			<p>{name}</p>
+			<p>{size}</p>
+			<p>{time}</p>
+			<button className={styles.btnDeleteProcess}>
+				<Trash2 />
+			</button>
+		</div>
 	);
 }
 
