@@ -3,6 +3,7 @@ import Footer from "../components/footer";
 import NavBar from "../components/navbar";
 import Information from "../components/information";
 import { Select } from "radix-ui";
+import { ChevronDown, Trash2, Play, FastForward } from "react-feather";
 
 function CMAPage() {
 	return (
@@ -26,9 +27,9 @@ function Main() {
 		<main className={`maxWidthWrapper ${styles.main}`}>
 			<section className={styles.processes}>Processes</section>
 			<section className={styles.parameters}>Parameters</section>
-			<section className={styles.players}>Players</section>
 			<section className={styles.chart}>Chart</section>
 			<section className={styles.simulation}>Simulation</section>
+			<Players />
 			<Algorithms />
 		</main>
 	);
@@ -66,6 +67,28 @@ function Algorithms() {
 					</Select.Content>
 				</Select.Portal>
 			</Select.Root>
+		</section>
+	);
+}
+
+function Players() {
+	return (
+		<section className={styles.players}>
+			<h2 className={styles.sectionTitle}>Players</h2>
+			<div className={styles.playersContainer}>
+				<button className={styles.btnForward}>
+					<Play />
+				</button>
+				<button className={styles.btnBackward}>
+					<Play />
+				</button>
+				<button className={styles.btnFastForward}>
+					<FastForward />
+				</button>
+				<button className={styles.btnFastBackward}>
+					<FastForward />
+				</button>
+			</div>
 		</section>
 	);
 }

@@ -43,6 +43,9 @@
 
 .players {
 	grid-area: players;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .simulation {
@@ -131,6 +134,57 @@
 	color: var(--color-primary);
 }
 
+/* == PLAYERS == */
+
+.playersContainer {
+	display: flex;
+	gap: 1rem;
+}
+
+.playersContainer > button {
+	padding-left: 5px;
+	height: 40px;
+	aspect-ratio: 1 / 1;
+	display: grid;
+	place-content: center;
+	background: var(--color-bg);
+	color: var(--color-gray);
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: color 0.3s ease;
+}
+
+.playersContainer > button:hover {
+	color: var(--color-primary);
+}
+
+.playersContainer > button:focus {
+	outline: 2px solid var(--color-primary);
+}
+
+.btnForward > svg,
+.btnBackward > svg {
+	width: 18px;
+	height: 18px;
+}
+
+.btnFastForward > svg,
+.btnFastBackward > svg {
+	width: 22px;
+	height: 22px;
+}
+
+.btnBackward,
+.btnFastBackward {
+	padding-left: 0;
+	padding-right: 5px;
+}
+
+.btnBackward > svg,
+.btnFastBackward > svg {
+	transform: rotate(180deg);
+}
 @media (max-width: 900px) {
 	.main {
 		grid-template-areas: none;
