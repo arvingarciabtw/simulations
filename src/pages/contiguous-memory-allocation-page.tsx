@@ -13,7 +13,7 @@ function CMAPage() {
 				title="Contiguous Memory Allocation"
 				description="
           A visualizer for contiguous memory allocation. Provide the parameters
-          you want, and specify your chosen algorithm on the top left.
+          you want, and specify your chosen algorithm.
         "
 			/>
 			<Main />
@@ -25,12 +25,12 @@ function CMAPage() {
 function Main() {
 	return (
 		<main className={`maxWidthWrapper ${styles.main}`}>
-			<section className={styles.processes}>Processes</section>
-			<section className={styles.parameters}>Parameters</section>
-			<section className={styles.chart}>Chart</section>
-			<section className={styles.simulation}>Simulation</section>
 			<Players />
 			<Algorithms />
+			<Processes />
+			<Parameters />
+			<Chart />
+			<Simulation />
 		</main>
 	);
 }
@@ -71,6 +71,33 @@ function Algorithms() {
 	);
 }
 
+function Processes() {
+	return (
+		<section className={styles.processes}>
+			<div className={styles.processesContainer}>
+				<div className={styles.processHeader}>
+					<p>Name</p>
+					<p>Size</p>
+					<p>Time</p>
+				</div>
+				<div className={styles.separator}></div>
+				<div className={styles.process}>
+					<p>Process 1</p>
+					<p>100</p>
+					<p>5</p>
+					<button className={styles.btnDeleteProcess}>
+						<Trash2 />
+					</button>
+				</div>
+			</div>
+		</section>
+	);
+}
+
+function Parameters() {
+	return <section className={styles.parameters}>Parameters</section>;
+}
+
 function Players() {
 	return (
 		<section className={styles.players}>
@@ -91,6 +118,14 @@ function Players() {
 			</div>
 		</section>
 	);
+}
+
+function Chart() {
+	return <section className={styles.chart}>Chart</section>;
+}
+
+function Simulation() {
+	return <section className={styles.simulation}>Simulation</section>;
 }
 
 export default CMAPage;

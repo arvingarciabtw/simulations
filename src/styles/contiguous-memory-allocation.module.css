@@ -2,17 +2,16 @@
 	min-height: 600px;
 	display: grid;
 	grid-template-areas:
-		"algorithms players    players simulation"
+		"players    algorithms algorithms simulation"
 		"processes  parameters parameters simulation"
-		"processes  chart      chart   simulation";
-	grid-template-columns: 300px 1fr 80px 300px;
+		"processes  chart      chart      simulation";
+	grid-template-columns: 360px 1fr 80px 300px;
 	grid-template-rows: 80px 160px 1fr;
 	gap: 1rem;
 }
 
 .main > section {
-	display: grid;
-	place-content: center;
+	padding: 1rem;
 	color: var(--color-gray);
 }
 
@@ -185,6 +184,9 @@
 .btnFastBackward > svg {
 	transform: rotate(180deg);
 }
+
+/* == MEDIA QUERIES == */
+
 @media (max-width: 900px) {
 	.main {
 		grid-template-areas: none;
