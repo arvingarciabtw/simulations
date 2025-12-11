@@ -37,9 +37,31 @@ function Main() {
 	);
 }
 
+function Players() {
+	return (
+		<section className={styles.playersGridArea}>
+			<h2 className={styles.sectionTitle}>Players</h2>
+			<div className={styles.playersContainer}>
+				<button className={styles.btnForward}>
+					<Play />
+				</button>
+				<button className={styles.btnBackward}>
+					<Play />
+				</button>
+				<button className={styles.btnFastForward}>
+					<FastForward />
+				</button>
+				<button className={styles.btnFastBackward}>
+					<FastForward />
+				</button>
+			</div>
+		</section>
+	);
+}
+
 function Algorithms() {
 	return (
-		<section className={styles.algorithms}>
+		<section className={styles.algorithmsGridArea}>
 			<h2 className={styles.sectionTitle}>Algorithm</h2>
 			<Select.Root>
 				<Select.Trigger className={styles.selectTrigger} aria-label="Algorithm">
@@ -124,37 +146,30 @@ function Process({ name, size, time }: Process) {
 }
 
 function Parameters() {
-	return <section className={styles.parameters}>Parameters</section>;
-}
-
-function Players() {
 	return (
-		<section className={styles.players}>
-			<h2 className={styles.sectionTitle}>Players</h2>
-			<div className={styles.playersContainer}>
-				<button className={styles.btnForward}>
-					<Play />
-				</button>
-				<button className={styles.btnBackward}>
-					<Play />
-				</button>
-				<button className={styles.btnFastForward}>
-					<FastForward />
-				</button>
-				<button className={styles.btnFastBackward}>
-					<FastForward />
-				</button>
+		<section className={styles.parametersGridArea}>
+			<div className={styles.memorySize}>
+				<label htmlFor="">Memory Size</label>
+				<input type="text" required />
+			</div>
+			<div className={styles.compactionTime}>
+				<label htmlFor="">Compaction Time</label>
+				<input type="text" required />
+			</div>
+			<div className={styles.coalescingTime}>
+				<label htmlFor="">Coalescing Time</label>
+				<input type="text" required />
 			</div>
 		</section>
 	);
 }
 
 function Chart() {
-	return <section className={styles.chart}>Chart</section>;
+	return <section className={styles.chartGridArea}>Chart</section>;
 }
 
 function Simulation() {
-	return <section className={styles.simulation}>Simulation</section>;
+	return <section className={styles.simulationGridArea}>Simulation</section>;
 }
 
 export default CMAPage;

@@ -10,19 +10,19 @@
 	gap: 1rem;
 }
 
-.algorithms,
+.algorithmsGridArea,
 .processesGridArea,
-.parameters,
-.players,
-.simulation,
-.chart {
+.parametersGridArea,
+.playersGridArea,
+.simulationGridArea,
+.chartGridArea {
 	padding: 1rem;
 	background: var(--color-bg-alt);
 	color: var(--color-gray);
 	border: 2px solid var(--color-dark-gray);
 }
 
-.algorithms {
+.algorithmsGridArea {
 	grid-area: algorithms;
 	display: flex;
 	justify-content: space-between;
@@ -33,22 +33,22 @@
 	grid-area: processes;
 }
 
-.parameters {
+.parametersGridArea {
 	grid-area: parameters;
 }
 
-.players {
+.playersGridArea {
 	grid-area: players;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-.simulation {
+.simulationGridArea {
 	grid-area: simulation;
 }
 
-.chart {
+.chartGridArea {
 	grid-area: chart;
 }
 
