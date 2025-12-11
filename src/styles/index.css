@@ -143,6 +143,22 @@ html {
 	color: var(--color-primary);
 }
 
+/* == SCROLLBAR == */
+
+/* Firefox */
+* {
+	scrollbar-color: var(--color-dark-gray) transparent;
+}
+
+/* Vendor prefix for other browsers */
+::-webkit-scrollbar {
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--color-dark-gray);
+}
+
 /* == GENERAL == */
 
 .maxWidthWrapper {
