@@ -248,7 +248,70 @@ function ProcessCell({ type, name }: ProcessCell) {
 }
 
 function Simulation() {
-	return <section className={styles.simulationGridArea}>Simulation</section>;
+	const [placeholderData, setPlaceholderData] = useState([
+		{ type: "sc", name: "150 KB", height: 15 },
+		{ type: "sc", name: "150 KB", height: 15 },
+		{ type: "normal", name: "Process 3", height: 10 },
+		{ type: "normal", name: "Process 4", height: 30 },
+		{ type: "ch", name: "200 KB", height: 20 },
+		{ type: "normal", name: "Process 6", height: 10 },
+	]);
+	return (
+		<section className={styles.simulationGridArea}>
+			<h2 className={styles.sectionTitle}>Simulation</h2>
+			<div className={styles.processBlocks}>
+				{placeholderData.map((el) => (
+					<ProcessBlock
+						key={el.name}
+						type={el.type}
+						name={el.name}
+						height={el.height}
+					/>
+				))}
+			</div>
+		</section>
+	);
+}
+
+interface ProcessBlock {
+	type: string;
+	name: string;
+	height: number;
+}
+
+function ProcessBlock({ type, name, height }: ProcessBlock) {
+	return (
+		<>
+			{type === "ch" ? (
+				<article
+					className={`${styles.processBlock} ${styles.coalescingHoleBlock}`}
+					style={{
+						height: `${height}%`,
+					}}
+				>
+					{name}
+				</article>
+			) : type === "sc" ? (
+				<article
+					className={`${styles.processBlock} ${styles.storageCompactionBlock}`}
+					style={{
+						height: `${height}%`,
+					}}
+				>
+					{name}
+				</article>
+			) : (
+				<article
+					className={styles.processBlock}
+					style={{
+						height: `${height}%`,
+					}}
+				>
+					{name}
+				</article>
+			)}
+		</>
+	);
 }
 
 export default CMAPage;
