@@ -152,6 +152,7 @@ html {
 
 /* Vendor prefix for other browsers */
 ::-webkit-scrollbar {
+	width: 20px;
 	background-color: transparent;
 }
 

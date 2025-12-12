@@ -1,5 +1,5 @@
 .main {
-	min-height: 600px;
+	max-height: 660px;
 	display: grid;
 	grid-template-areas:
 		"players    algorithms algorithms simulation"
