@@ -268,6 +268,39 @@
 	outline: 2px solid var(--color-primary);
 }
 
+/* == CHART == */
+
+.processCells {
+	margin-top: 0.25rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+	gap: 6px;
+	max-height: calc(290px);
+	overflow-y: auto;
+}
+
+.processCell {
+	background: var(--color-bg);
+	aspect-ratio: 1 / 1;
+	display: grid;
+	place-content: center;
+	border-radius: 8px;
+	border: 2px solid transparent;
+}
+
+.coalescingHole {
+	background: transparent;
+	color: var(--color-dark-gray);
+	border: 2px dashed var(--color-dark-gray);
+}
+
+.storageCompaction {
+	background: transparent;
+	color: var(--color-primary);
+	border: 2px dashed var(--color-primary);
+	opacity: 0.5;
+}
+
 /* == MEDIA QUERIES == */
 
 @media (max-width: 900px) {
