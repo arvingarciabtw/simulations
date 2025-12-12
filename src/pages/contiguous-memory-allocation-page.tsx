@@ -30,8 +30,8 @@ function Main() {
 		<main className={`maxWidthWrapper ${styles.main}`}>
 			<Players />
 			<Algorithms />
-			<Processes />
 			<Parameters />
+			<Processes />
 			<Chart />
 			<Simulation />
 		</main>

@@ -83,9 +83,6 @@
 .selectTrigger:hover .selectTrigger {
 	color: var(--color-primary);
 }
-.selectTrigger:focus {
-	outline: 2px solid var(--color-primary);
-}
 
 .selectTrigger > span:first-of-type {
 	text-align: left;
@@ -153,10 +150,6 @@
 
 .playersContainer > button:hover {
 	color: var(--color-primary);
-}
-
-.playersContainer > button:focus {
-	outline: 2px solid var(--color-primary);
 }
 
 .btnForward > svg,
@@ -234,10 +227,6 @@
 	color: var(--color-primary);
 }
 
-.btnDeleteProcess:focus {
-	outline: 2px solid var(--color-primary);
-}
-
 /* == PARAMETERS == */
 
 .parametersGridArea {
@@ -261,10 +250,6 @@
 	border-radius: 12px;
 	height: 34px;
 	text-align: center;
-}
-
-.parametersGridArea input:focus {
-	outline: 2px solid var(--color-primary);
 }
 
 /* == CHART == */

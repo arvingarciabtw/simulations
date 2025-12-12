@@ -17,6 +17,7 @@
 	transition: color 0.3s ease;
 }
 
-.home:hover {
+.home:hover,
+.home:focus {
 	color: var(--color-primary);
 }
