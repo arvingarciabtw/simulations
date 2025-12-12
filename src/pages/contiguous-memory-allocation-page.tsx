@@ -289,7 +289,7 @@ function ProcessBlock({ type, name, height }: ProcessBlock) {
 						height: `${height}%`,
 					}}
 				>
-					{name}
+					<span>{name}</span>
 				</article>
 			) : type === "sc" ? (
 				<article

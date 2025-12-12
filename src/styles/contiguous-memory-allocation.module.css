@@ -292,7 +292,6 @@
 	border: 2px dashed var(--color-dark-gray);
 	text-shadow: 2px 2px 10px var(--color-bg);
 
-	opacity: 0.75;
 	background-color: var(--color-dark-gray);
 	background-size: 10px 10px;
 	background-image: repeating-linear-gradient(
@@ -308,7 +307,7 @@
 	background: transparent;
 	color: var(--color-primary);
 	border: 2px dashed var(--color-primary);
-	opacity: 0.5;
+	opacity: 0.8;
 }
 
 /* == SIMULATION == */
@@ -334,7 +333,7 @@
 	background: transparent;
 	color: var(--color-primary);
 	border: 2px dashed var(--color-primary);
-	opacity: 0.5;
+	opacity: 0.8;
 }
 
 .coalescingHoleBlock {
@@ -342,7 +341,6 @@
 	border: 2px dashed var(--color-dark-gray);
 	text-shadow: 2px 2px 10px var(--color-bg);
 
-	opacity: 0.75;
 	background-color: var(--color-dark-gray);
 	background-size: 10px 10px;
 	background-image: repeating-linear-gradient(
@@ -352,6 +350,13 @@
 		var(--color-bg-alt) 0,
 		var(--color-bg-alt) 50%
 	);
+}
+
+.coalescingHoleBlock > span {
+	padding: 0.25rem 0.75rem;
+	background: var(--color-bg);
+	border-radius: 8px;
+	border: 2px dashed var(--color-dark-gray);
 }
 
 /* == MEDIA QUERIES == */
