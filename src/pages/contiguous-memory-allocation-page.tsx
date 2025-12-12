@@ -150,16 +150,34 @@ function Parameters() {
 	return (
 		<section className={styles.parametersGridArea}>
 			<div className={styles.memorySize}>
-				<label htmlFor="">Memory Size</label>
-				<input type="text" required />
+				<label htmlFor="memory-size">Memory Size</label>
+				<input
+					type="text"
+					name="memory-size"
+					id="memory-size"
+					value="1000"
+					required
+				/>
 			</div>
 			<div className={styles.compactionTime}>
-				<label htmlFor="">Compaction Time</label>
-				<input type="text" required />
+				<label htmlFor="compaction-time">Compaction Time</label>
+				<input
+					type="text"
+					name="compaction-time"
+					id="compaction-time"
+					value="16"
+					required
+				/>
 			</div>
 			<div className={styles.coalescingTime}>
-				<label htmlFor="">Coalescing Time</label>
-				<input type="text" required />
+				<label htmlFor="coalescing-time">Coalescing Time</label>
+				<input
+					type="text"
+					name="coalescing-time"
+					id="coalescing-time"
+					value="4"
+					required
+				/>
 			</div>
 		</section>
 	);
