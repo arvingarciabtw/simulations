@@ -97,7 +97,7 @@ function Algorithms() {
 }
 
 function Processes() {
-	const [placeholderData, setPlaceholderData] = useState([
+	const [placeholderData] = useState([
 		{ name: "Process 1", size: 100, time: 5 },
 		{ name: "Process 2", size: 200, time: 2 },
 		{ name: "Process 3", size: 300, time: 4 },
@@ -184,7 +184,7 @@ function Parameters() {
 }
 
 function Chart() {
-	const [placeholderData, setPlaceholderData] = useState([
+	const [placeholderData] = useState([
 		{ id: 1, name: "P1", type: "normal" },
 		{ id: 2, name: "P2", type: "normal" },
 		{ id: 3, name: "P1", type: "normal" },
@@ -248,7 +248,7 @@ function ProcessCell({ type, name }: ProcessCell) {
 }
 
 function Simulation() {
-	const [placeholderData, setPlaceholderData] = useState([
+	const [placeholderData] = useState([
 		{ type: "sc", name: "150 KB", height: 15 },
 		{ type: "sc", name: "150 KB", height: 15 },
 		{ type: "normal", name: "Process 3", height: 10 },
