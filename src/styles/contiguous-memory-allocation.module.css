@@ -362,6 +362,51 @@
 	}
 }
 
+.deleteDialog {
+	padding: 1.5rem;
+	width: 88vw;
+	max-width: 260px;
+	max-height: 85vh;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+
+	background-color: var(--color-bg);
+	border-radius: 12px;
+	filter: drop-shadow(0 0 0.75rem var(--color-bg-alt));
+
+	transform: translate(-50%, -50%);
+	animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.deleteDialog:focus {
+	outline: none;
+}
+
+.deleteDialogBtns {
+	display: flex;
+	gap: 1rem;
+}
+
+.deleteDialogBtns > button {
+	flex: 1;
+}
+
+.btnDialogCancel,
+.btnDialogDeleteProcess {
+	padding: 8px 12px;
+	background: var(--color-bg-alt);
+	color: var(--color-gray);
+	border: none;
+	border-radius: 12px;
+	cursor: pointer;
+	transition: color 0.3s ease;
+}
+
+.btnDialogCancel:hover,
+.btnDialogDeleteProcess:hover {
+	color: var(--color-primary);
+}
+
 /* == PARAMETERS == */
 
 .parametersGridArea {

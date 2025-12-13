@@ -119,7 +119,7 @@ function Processes() {
 					<p>Time</p>
 					<Dialog.Root>
 						<Dialog.Trigger asChild>
-							<button className={`${styles.btnAddProcess} Button`}>
+							<button className={styles.btnAddProcess}>
 								<Plus />
 							</button>
 						</Dialog.Trigger>
@@ -209,9 +209,34 @@ function Process({ name, size, time }: Process) {
 			<p>{name}</p>
 			<p>{size}</p>
 			<p>{time}</p>
-			<button className={styles.btnDeleteProcess}>
-				<Trash2 />
-			</button>
+			<Dialog.Root>
+				<Dialog.Trigger asChild>
+					<button className={styles.btnDeleteProcess}>
+						<Trash2 />
+					</button>
+				</Dialog.Trigger>
+				<Dialog.Portal>
+					<Dialog.Overlay className={styles.dialogOverlay} />
+					<Dialog.Content className={styles.deleteDialog}>
+						<Dialog.Title className={styles.dialogTitle}>
+							Delete a Process
+						</Dialog.Title>
+						<Dialog.Description className={styles.dialogDescription}>
+							Are you sure you want to delete this process?
+						</Dialog.Description>
+						<div className={styles.deleteDialogBtns}>
+							<Dialog.Close asChild>
+								<button className={styles.btnDialogCancel}>Cancel</button>
+							</Dialog.Close>
+							<Dialog.Close asChild>
+								<button className={`${styles.btnDialogDeleteProcess}`}>
+									Delete
+								</button>
+							</Dialog.Close>
+						</div>
+					</Dialog.Content>
+				</Dialog.Portal>
+			</Dialog.Root>
 		</div>
 	);
 }
