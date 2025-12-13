@@ -3,6 +3,8 @@ import Footer from "../components/footer";
 import NavBar from "../components/navbar";
 import Information from "../components/information";
 import type { Process } from "../types/process.model";
+import type { ProcessCell } from "../types/process-cell.model";
+import type { ProcessBlock } from "../types/process-block.model";
 import { Select, Dialog } from "radix-ui";
 import {
 	ChevronDown,
@@ -14,7 +16,6 @@ import {
 	X,
 } from "react-feather";
 import { useState } from "react";
-import type { ProcessCell } from "../types/process-cell.model";
 
 function CMAPage() {
 	return (
@@ -371,12 +372,6 @@ function Simulation() {
 			</div>
 		</section>
 	);
-}
-
-interface ProcessBlock {
-	type: string;
-	name: string;
-	height: number;
 }
 
 function ProcessBlock({ type, name, height }: ProcessBlock) {
