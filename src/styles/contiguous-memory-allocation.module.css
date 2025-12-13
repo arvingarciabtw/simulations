@@ -197,6 +197,11 @@
 	gap: 1rem;
 }
 
+.processHeader {
+	padding-right: 0.5rem;
+	align-items: end;
+}
+
 .processes {
 	padding-right: 0.5rem;
 	display: flex;
@@ -206,7 +211,8 @@
 	overflow-y: auto;
 }
 
-.btnDeleteProcess {
+.btnDeleteProcess,
+.btnAddProcess {
 	padding: 0;
 	background: transparent;
 	color: var(--color-gray);
@@ -218,13 +224,141 @@
 	transition: color 0.3s ease;
 }
 
-.btnDeleteProcess > svg {
+.btnDeleteProcess > svg,
+.btnAddProcess > svg {
 	width: 16px;
 	height: 20px;
 }
 
-.btnDeleteProcess:hover {
+.btnDeleteProcess:hover,
+.btnAddProcess:hover {
 	color: var(--color-primary);
+}
+
+.dialogOverlay {
+	position: fixed;
+	inset: 0;
+	background-color: var(--color-bg);
+	opacity: 0.8;
+}
+
+.dialogContent {
+	padding: 1.5rem;
+	width: 88vw;
+	max-width: 400px;
+	max-height: 85vh;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+
+	background-color: var(--color-bg);
+	border-radius: 12px;
+	filter: drop-shadow(0 0 0.75rem var(--color-bg-alt));
+
+	transform: translate(-50%, -50%);
+	animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dialogTitle {
+	margin: 0;
+	color: var(--color-fg);
+	font-weight: var(--weight-bold);
+	font-size: 1.25rem;
+}
+
+.dialogDescription {
+	margin: 10px 0 20px;
+	color: var(--color-gray);
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
+.iconButton {
+	all: unset;
+	height: 20px;
+	width: 20px;
+	position: absolute;
+	top: calc(1.5rem + 4px);
+	right: 1.5rem;
+	display: grid;
+	place-content: center;
+
+	color: var(--color-gray);
+	border-radius: 100%;
+	font-family: inherit;
+	cursor: pointer;
+	transition: color 0.3s ease;
+}
+.iconButton:hover {
+	color: var(--color-primary);
+}
+
+.addProcessInputs {
+	display: flex;
+	gap: 1rem;
+}
+
+.fieldset {
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+	gap: 8px;
+	border: none;
+}
+
+.label {
+	width: 100%;
+	color: var(--color-gray);
+	font-size: 1rem;
+	text-align: left;
+}
+
+.input {
+	padding: 4px 12px 6px 12px;
+	width: 100%;
+	height: 36px;
+	background: var(--color-bg-alt);
+	color: var(--color-gray);
+	border: none;
+	border-radius: 12px;
+	font-size: 1rem;
+	line-height: 1;
+}
+
+.btnDialogAddProcess {
+	padding: 4px 12px;
+	background: var(--color-primary);
+	color: var(--color-bg);
+	border: none;
+	border-radius: 12px;
+	cursor: pointer;
+	transition: opacity 0.3s ease;
+}
+
+.btnDialogAddProcess:hover {
+	opacity: 0.75;
+}
+
+@keyframes overlayShow {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes contentShow {
+	from {
+		opacity: 0;
+		transform: translate(-50%, -48%) scale(0.96);
+	}
+	to {
+		opacity: 1;
+		transform: translate(-50%, -50%) scale(1);
+	}
 }
 
 /* == PARAMETERS == */
@@ -309,7 +443,7 @@
 	padding: 0.5rem;
 	background: var(--color-primary);
 	color: var(--color-bg);
-	border-radius: 12px;
+	border-radius: 10px;
 	display: grid;
 	place-content: center;
 }

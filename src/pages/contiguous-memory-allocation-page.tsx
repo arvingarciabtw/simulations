@@ -3,8 +3,8 @@ import Footer from "../components/footer";
 import NavBar from "../components/navbar";
 import Information from "../components/information";
 import type { Process } from "../types/process.model";
-import { Select } from "radix-ui";
-import { ChevronDown, Trash2, Play, FastForward } from "react-feather";
+import { Select, Dialog } from "radix-ui";
+import { ChevronDown, Trash2, Play, FastForward, Plus, X } from "react-feather";
 import { useState } from "react";
 import type { ProcessCell } from "../types/process-cell.model";
 
@@ -109,6 +109,7 @@ function Processes() {
 		{ name: "Process 9", size: 900, time: 6 },
 		{ name: "Process 10", size: 950, time: 4 },
 	]);
+
 	return (
 		<section className={styles.processesGridArea}>
 			<div className={styles.processesContainer}>
@@ -116,6 +117,75 @@ function Processes() {
 					<p>Name</p>
 					<p>Size</p>
 					<p>Time</p>
+					<Dialog.Root>
+						<Dialog.Trigger asChild>
+							<button className={`${styles.btnAddProcess} Button`}>
+								<Plus />
+							</button>
+						</Dialog.Trigger>
+						<Dialog.Portal>
+							<Dialog.Overlay className={styles.dialogOverlay} />
+							<Dialog.Content className={styles.dialogContent}>
+								<Dialog.Title className={styles.dialogTitle}>
+									Add a Process
+								</Dialog.Title>
+								<Dialog.Description className={styles.dialogDescription}>
+									Specify the parameters of the process below. Click add when
+									you are done.
+								</Dialog.Description>
+								<div className={styles.addProcessInputs}>
+									<fieldset className={styles.fieldset}>
+										<label className={styles.label} htmlFor="name">
+											Name
+										</label>
+										<input
+											className={styles.input}
+											id="name"
+											defaultValue="Process 1"
+										/>
+									</fieldset>
+									<fieldset className={styles.fieldset}>
+										<label className={styles.label} htmlFor="size">
+											Size
+										</label>
+										<input
+											className={styles.input}
+											id="size"
+											defaultValue={100}
+										/>
+									</fieldset>
+									<fieldset className={styles.fieldset}>
+										<label className={styles.label} htmlFor="time">
+											Time
+										</label>
+										<input
+											className={styles.input}
+											id="time"
+											defaultValue={5}
+										/>
+									</fieldset>
+								</div>
+								<div
+									style={{
+										display: "flex",
+										marginTop: 24,
+										justifyContent: "flex-end",
+									}}
+								>
+									<Dialog.Close asChild>
+										<button className={`${styles.btnDialogAddProcess}`}>
+											Add
+										</button>
+									</Dialog.Close>
+								</div>
+								<Dialog.Close asChild>
+									<button className={styles.iconButton} aria-label="Close">
+										<X />
+									</button>
+								</Dialog.Close>
+							</Dialog.Content>
+						</Dialog.Portal>
+					</Dialog.Root>
 				</div>
 				<div className={styles.separator}></div>
 				<div className={styles.processes}>
