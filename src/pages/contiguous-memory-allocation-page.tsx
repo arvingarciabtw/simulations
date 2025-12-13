@@ -4,7 +4,15 @@ import NavBar from "../components/navbar";
 import Information from "../components/information";
 import type { Process } from "../types/process.model";
 import { Select, Dialog } from "radix-ui";
-import { ChevronDown, Trash2, Play, FastForward, Plus, X } from "react-feather";
+import {
+	ChevronDown,
+	Trash2,
+	RotateCw,
+	Play,
+	FastForward,
+	Plus,
+	X,
+} from "react-feather";
 import { useState } from "react";
 import type { ProcessCell } from "../types/process-cell.model";
 
@@ -43,16 +51,13 @@ function Players() {
 		<section className={styles.playersGridArea}>
 			<h2 className={styles.sectionTitle}>Players</h2>
 			<div className={styles.playersContainer}>
+				<button className={styles.btnReset}>
+					<RotateCw />
+				</button>
 				<button className={styles.btnForward}>
 					<Play />
 				</button>
-				<button className={styles.btnBackward}>
-					<Play />
-				</button>
 				<button className={styles.btnFastForward}>
-					<FastForward />
-				</button>
-				<button className={styles.btnFastBackward}>
 					<FastForward />
 				</button>
 			</div>

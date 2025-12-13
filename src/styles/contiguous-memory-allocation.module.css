@@ -152,27 +152,19 @@
 	color: var(--color-primary);
 }
 
-.btnForward > svg,
-.btnBackward > svg {
+.btnReset > svg,
+.btnForward > svg {
 	width: 18px;
 	height: 18px;
 }
 
-.btnFastForward > svg,
-.btnFastBackward > svg {
+.btnFastForward > svg {
 	width: 22px;
 	height: 22px;
 }
 
-.btnBackward,
-.btnFastBackward {
-	padding-left: 0;
-	padding-right: 5px;
-}
-
-.btnBackward > svg,
-.btnFastBackward > svg {
-	transform: rotate(180deg);
+.playersContainer .btnReset {
+	padding-left: 4px;
 }
 
 /* == PROCESSES == */
