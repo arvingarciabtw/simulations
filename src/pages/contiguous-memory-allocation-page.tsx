@@ -103,18 +103,44 @@ function Algorithms() {
 }
 
 function Processes() {
-	const [placeholderData] = useState([
-		{ name: "Process 1", size: 100, time: 5 },
-		{ name: "Process 2", size: 200, time: 2 },
-		{ name: "Process 3", size: 300, time: 4 },
-		{ name: "Process 4", size: 400, time: 8 },
-		{ name: "Process 5", size: 500, time: 9 },
-		{ name: "Process 6", size: 600, time: 1 },
-		{ name: "Process 7", size: 700, time: 1 },
-		{ name: "Process 8", size: 800, time: 3 },
-		{ name: "Process 9", size: 900, time: 6 },
-		{ name: "Process 10", size: 950, time: 4 },
-	]);
+	const [open, setOpen] = useState(false);
+	const [processes, setProcesses] = useState<Process[]>([]);
+	const [processData, setProcessData] = useState<Process>({
+		name: "",
+		size: +"",
+		time: +"",
+	});
+
+	function handleProcessData(
+		e: React.ChangeEvent<HTMLInputElement>,
+		type: string,
+	) {
+		if (type === "name") {
+			setProcessData({
+				name: e.target.value,
+				size: processData.size,
+				time: processData.time,
+			});
+		} else if (type === "size") {
+			setProcessData({
+				name: processData.name,
+				size: +e.target.value,
+				time: processData.time,
+			});
+		} else if (type === "time") {
+			setProcessData({
+				name: processData.name,
+				size: processData.size,
+				time: +e.target.value,
+			});
+		}
+	}
+
+	function handleSubmit(e: React.FormEvent) {
+		e.preventDefault();
+		setOpen(false);
+		setProcesses([...processes, processData]);
+	}
 
 	return (
 		<section className={styles.processesGridArea}>
@@ -123,7 +149,7 @@ function Processes() {
 					<p>Name</p>
 					<p>Size</p>
 					<p>Time</p>
-					<Dialog.Root>
+					<Dialog.Root open={open} onOpenChange={setOpen}>
 						<Dialog.Trigger asChild>
 							<button className={styles.btnAddProcess}>
 								<Plus />
@@ -139,51 +165,68 @@ function Processes() {
 									Specify the parameters of the process below. Click add when
 									you are done.
 								</Dialog.Description>
-								<div className={styles.addProcessInputs}>
-									<fieldset className={styles.fieldset}>
-										<label className={styles.label} htmlFor="name">
-											Name
-										</label>
-										<input
-											className={styles.input}
-											id="name"
-											defaultValue="Process 1"
-										/>
-									</fieldset>
-									<fieldset className={styles.fieldset}>
-										<label className={styles.label} htmlFor="size">
-											Size
-										</label>
-										<input
-											className={styles.input}
-											id="size"
-											defaultValue={100}
-										/>
-									</fieldset>
-									<fieldset className={styles.fieldset}>
-										<label className={styles.label} htmlFor="time">
-											Time
-										</label>
-										<input
-											className={styles.input}
-											id="time"
-											defaultValue={5}
-										/>
-									</fieldset>
-								</div>
-								<div
-									style={{
-										display: "flex",
-										marginTop: 24,
-										justifyContent: "flex-end",
-									}}
-								>
-									<Dialog.Close asChild>
-										<button className={`${styles.btnDialogAddProcess}`}>
+								<form onSubmit={(e) => handleSubmit(e)}>
+									<div className={styles.addProcessInputs}>
+										<fieldset className={styles.fieldset}>
+											<label className={styles.label} htmlFor="name">
+												Name
+											</label>
+											<input
+												required
+												className={styles.input}
+												id="name"
+												placeholder="Process 1"
+												onChange={(e) => handleProcessData(e, "name")}
+											/>
+										</fieldset>
+										<fieldset className={styles.fieldset}>
+											<label className={styles.label} htmlFor="size">
+												Size
+											</label>
+											<input
+												required
+												className={styles.input}
+												id="size"
+												inputMode="numeric"
+												pattern="\d*"
+												title="Only numbers are allowed"
+												placeholder="100"
+												onChange={(e) => handleProcessData(e, "size")}
+											/>
+										</fieldset>
+										<fieldset className={styles.fieldset}>
+											<label className={styles.label} htmlFor="time">
+												Time
+											</label>
+											<input
+												required
+												className={styles.input}
+												id="time"
+												inputMode="numeric"
+												pattern="\d*"
+												title="Only numbers are allowed"
+												placeholder="5"
+												onChange={(e) => handleProcessData(e, "time")}
+											/>
+										</fieldset>
+									</div>
+									<div
+										style={{
+											display: "flex",
+											marginTop: 24,
+											justifyContent: "flex-end",
+										}}
+									>
+										{/* <Dialog.Close asChild> */}
+										<button
+											className={`${styles.btnDialogAddProcess}`}
+											type="submit"
+										>
 											Add
 										</button>
-									</Dialog.Close>
-								</div>
+										{/* </Dialog.Close> */}
+									</div>
+								</form>
 								<Dialog.Close asChild>
 									<button className={styles.iconButton} aria-label="Close">
 										<X />
@@ -195,13 +238,8 @@ function Processes() {
 				</div>
 				<div className={styles.separator}></div>
 				<div className={styles.processes}>
-					{placeholderData.map((el) => (
-						<Process
-							key={el.name}
-							name={el.name}
-							size={el.size}
-							time={el.time}
-						/>
+					{processes.map((el, index) => (
+						<Process key={index} name={el.name} size={el.size} time={el.time} />
 					))}
 				</div>
 			</div>
@@ -256,7 +294,7 @@ function Parameters() {
 					type="text"
 					name="memory-size"
 					id="memory-size"
-					value="1000"
+					placeholder="1000"
 					required
 				/>
 			</div>
@@ -266,7 +304,7 @@ function Parameters() {
 					type="text"
 					name="compaction-time"
 					id="compaction-time"
-					value="16"
+					placeholder="16"
 					required
 				/>
 			</div>
@@ -276,7 +314,7 @@ function Parameters() {
 					type="text"
 					name="coalescing-time"
 					id="coalescing-time"
-					value="4"
+					placeholder="4"
 					required
 				/>
 			</div>
@@ -350,8 +388,8 @@ function ProcessCell({ type, name }: ProcessCell) {
 
 function Simulation() {
 	const [placeholderData] = useState([
-		{ type: "sc", name: "150 KB", height: 15 },
-		{ type: "sc", name: "150 KB", height: 15 },
+		{ type: "sc", name: "125 KB", height: 12.5 },
+		{ type: "sc", name: "175 KB", height: 17.5 },
 		{ type: "normal", name: "Process 3", height: 10 },
 		{ type: "normal", name: "Process 4", height: 30 },
 		{ type: "ch", name: "200 KB", height: 20 },
