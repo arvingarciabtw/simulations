@@ -6,8 +6,15 @@ import { Trash2, Plus, X } from "react-feather";
 import { useState } from "react";
 
 export default function Processes() {
+	const processesLocal = localStorage.getItem("processes");
+	let parsedLocalProcesses;
+
+	if (typeof processesLocal === "string") {
+		parsedLocalProcesses = JSON.parse(processesLocal);
+	}
+
 	const [open, setOpen] = useState(false);
-	const [processes, setProcesses] = useState<Process[]>([]);
+	const [processes, setProcesses] = useState<Process[]>(parsedLocalProcesses);
 	const [processData, setProcessData] = useState<Process>({
 		name: "",
 		size: +"",
@@ -43,6 +50,10 @@ export default function Processes() {
 		e.preventDefault();
 		setOpen(false);
 		setProcesses([...processes, processData]);
+		localStorage.setItem(
+			"processes",
+			JSON.stringify([...processes, processData]),
+		);
 	}
 
 	return (
