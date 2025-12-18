@@ -91,12 +91,12 @@
 .selectContent {
 	overflow: hidden;
 	background: var(--color-bg);
-	border-radius: 6px;
+	border-radius: 16px;
+	filter: drop-shadow(0 0 0.75rem var(--color-bg-alt));
 }
 
 .selectViewport {
 	padding: 16px;
-	border: 2px solid var(--color-dark-gray);
 	border-radius: 16px;
 }
 
