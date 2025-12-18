@@ -1,13 +1,12 @@
 import styles from "../../styles/contiguous-memory-allocation.module.css";
-import type { Process } from "../../types/process.model.ts";
+import type { Process, ProcessProps } from "../../types/process.model.ts";
 import { Dialog } from "radix-ui";
-
 import { Trash2, Plus, X } from "react-feather";
 import { useState } from "react";
 
 export default function Processes() {
 	const processesLocal = localStorage.getItem("processes");
-	let parsedLocalProcesses;
+	let parsedLocalProcesses = [];
 
 	if (typeof processesLocal === "string") {
 		parsedLocalProcesses = JSON.parse(processesLocal);
@@ -16,6 +15,7 @@ export default function Processes() {
 	const [open, setOpen] = useState(false);
 	const [processes, setProcesses] = useState<Process[]>(parsedLocalProcesses);
 	const [processData, setProcessData] = useState<Process>({
+		id: "",
 		name: "",
 		size: +"",
 		time: +"",
@@ -27,18 +27,21 @@ export default function Processes() {
 	) {
 		if (type === "name") {
 			setProcessData({
+				id: crypto.randomUUID(),
 				name: e.target.value,
 				size: processData.size,
 				time: processData.time,
 			});
 		} else if (type === "size") {
 			setProcessData({
+				id: crypto.randomUUID(),
 				name: processData.name,
 				size: +e.target.value,
 				time: processData.time,
 			});
 		} else if (type === "time") {
 			setProcessData({
+				id: crypto.randomUUID(),
 				name: processData.name,
 				size: processData.size,
 				time: +e.target.value,
@@ -54,6 +57,12 @@ export default function Processes() {
 			"processes",
 			JSON.stringify([...processes, processData]),
 		);
+	}
+
+	function deleteProcess(id: string) {
+		const newProcesses = processes.filter((process) => process.id !== id);
+		setProcesses(newProcesses);
+		localStorage.setItem("processes", JSON.stringify(newProcesses));
 	}
 
 	return (
@@ -131,14 +140,12 @@ export default function Processes() {
 											justifyContent: "flex-end",
 										}}
 									>
-										{/* <Dialog.Close asChild> */}
 										<button
 											className={`${styles.btnDialogAddProcess}`}
 											type="submit"
 										>
 											Add
 										</button>
-										{/* </Dialog.Close> */}
 									</div>
 								</form>
 								<Dialog.Close asChild>
@@ -153,7 +160,7 @@ export default function Processes() {
 				<div className={styles.separator}></div>
 				<div className={styles.processes}>
 					{processes.map((el, index) => (
-						<Process key={index} name={el.name} size={el.size} time={el.time} />
+						<Process key={index} process={el} onDelete={deleteProcess} />
 					))}
 				</div>
 			</div>
@@ -161,13 +168,19 @@ export default function Processes() {
 	);
 }
 
-function Process({ name, size, time }: Process) {
+function Process({ process, onDelete }: ProcessProps) {
+	const [open, setOpen] = useState(false);
+
+	function closeModal() {
+		setOpen(false);
+	}
+
 	return (
 		<div className={styles.process}>
-			<p>{name}</p>
-			<p>{size}</p>
-			<p>{time}</p>
-			<Dialog.Root>
+			<p>{process.name}</p>
+			<p>{process.size}</p>
+			<p>{process.time}</p>
+			<Dialog.Root open={open} onOpenChange={setOpen}>
 				<Dialog.Trigger asChild>
 					<button className={styles.btnDeleteProcess}>
 						<Trash2 />
@@ -186,11 +199,15 @@ function Process({ name, size, time }: Process) {
 							<Dialog.Close asChild>
 								<button className={styles.btnDialogCancel}>Cancel</button>
 							</Dialog.Close>
-							<Dialog.Close asChild>
-								<button className={`${styles.btnDialogDeleteProcess}`}>
-									Delete
-								</button>
-							</Dialog.Close>
+							<button
+								onClick={() => {
+									onDelete(process.id);
+									closeModal();
+								}}
+								className={`${styles.btnDialogDeleteProcess}`}
+							>
+								Delete
+							</button>
 						</div>
 					</Dialog.Content>
 				</Dialog.Portal>
