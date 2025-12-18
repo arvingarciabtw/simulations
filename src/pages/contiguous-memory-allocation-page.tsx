@@ -3,6 +3,7 @@ import Footer from "../components/footer";
 import NavBar from "../components/navbar";
 import Information from "../components/information";
 import Processes from "../components/contiguous-memory-allocation/processes";
+import Parameters from "../components/contiguous-memory-allocation/parameters";
 import type { ProcessCell } from "../types/process-cell.model";
 import type { ProcessBlock } from "../types/process-block.model";
 import { Select } from "radix-ui";
@@ -90,43 +91,6 @@ function Algorithms() {
 					</Select.Content>
 				</Select.Portal>
 			</Select.Root>
-		</section>
-	);
-}
-
-function Parameters() {
-	return (
-		<section className={styles.parametersGridArea}>
-			<div className={styles.memorySize}>
-				<label htmlFor="memory-size">Memory Size</label>
-				<input
-					type="text"
-					name="memory-size"
-					id="memory-size"
-					placeholder="1000"
-					required
-				/>
-			</div>
-			<div className={styles.compactionTime}>
-				<label htmlFor="compaction-time">Compaction Time</label>
-				<input
-					type="text"
-					name="compaction-time"
-					id="compaction-time"
-					placeholder="16"
-					required
-				/>
-			</div>
-			<div className={styles.coalescingTime}>
-				<label htmlFor="coalescing-time">Coalescing Time</label>
-				<input
-					type="text"
-					name="coalescing-time"
-					id="coalescing-time"
-					placeholder="4"
-					required
-				/>
-			</div>
 		</section>
 	);
 }
