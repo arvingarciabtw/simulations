@@ -2,48 +2,51 @@ import styles from "../../styles/contiguous-memory-allocation.module.css";
 import type { Process, ProcessProps } from "../../types/process.model.ts";
 import { Dialog } from "radix-ui";
 import { Trash2, Plus, X } from "react-feather";
+import type { SetStateAction } from "react";
 import { useState } from "react";
 
-export default function Processes() {
-	const processesLocal = localStorage.getItem("processes");
-	let parsedLocalProcesses = [];
+interface ProcessesProps {
+	processes: {
+		value: Process[];
+		setProcesses: React.Dispatch<SetStateAction<Process[]>>;
+	};
+	processData: {
+		value: {
+			id: string;
+			name: string;
+			size: number;
+			time: number;
+		};
+		setProcessData: React.Dispatch<SetStateAction<Process>>;
+	};
+}
 
-	if (typeof processesLocal === "string") {
-		parsedLocalProcesses = JSON.parse(processesLocal);
-	}
-
+export default function Processes({ processes, processData }: ProcessesProps) {
 	const [open, setOpen] = useState(false);
-	const [processes, setProcesses] = useState<Process[]>(parsedLocalProcesses);
-	const [processData, setProcessData] = useState<Process>({
-		id: "",
-		name: "",
-		size: +"",
-		time: +"",
-	});
 
 	function handleProcessData(
 		e: React.ChangeEvent<HTMLInputElement>,
 		type: string,
 	) {
 		if (type === "name") {
-			setProcessData({
+			processData.setProcessData({
 				id: crypto.randomUUID(),
 				name: e.target.value,
-				size: processData.size,
-				time: processData.time,
+				size: processData.value.size,
+				time: processData.value.time,
 			});
 		} else if (type === "size") {
-			setProcessData({
+			processData.setProcessData({
 				id: crypto.randomUUID(),
-				name: processData.name,
+				name: processData.value.name,
 				size: +e.target.value,
-				time: processData.time,
+				time: processData.value.time,
 			});
 		} else if (type === "time") {
-			setProcessData({
+			processData.setProcessData({
 				id: crypto.randomUUID(),
-				name: processData.name,
-				size: processData.size,
+				name: processData.value.name,
+				size: processData.value.size,
 				time: +e.target.value,
 			});
 		}
@@ -52,16 +55,16 @@ export default function Processes() {
 	function handleSubmit(e: React.FormEvent) {
 		e.preventDefault();
 		setOpen(false);
-		setProcesses([...processes, processData]);
+		processes.setProcesses([...processes.value, processData.value]);
 		localStorage.setItem(
 			"processes",
-			JSON.stringify([...processes, processData]),
+			JSON.stringify([...processes.value, processData.value]),
 		);
 	}
 
 	function deleteProcess(id: string) {
-		const newProcesses = processes.filter((process) => process.id !== id);
-		setProcesses(newProcesses);
+		const newProcesses = processes.value.filter((process) => process.id !== id);
+		processes.setProcesses(newProcesses);
 		localStorage.setItem("processes", JSON.stringify(newProcesses));
 	}
 
@@ -159,7 +162,7 @@ export default function Processes() {
 				</div>
 				<div className={styles.separator}></div>
 				<div className={styles.processes}>
-					{processes.map((el, index) => (
+					{processes.value.map((el, index) => (
 						<Process key={index} process={el} onDelete={deleteProcess} />
 					))}
 				</div>

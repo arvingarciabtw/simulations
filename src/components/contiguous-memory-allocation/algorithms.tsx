@@ -1,17 +1,17 @@
 import styles from "../../styles/contiguous-memory-allocation.module.css";
 import { Select } from "radix-ui";
 import { ChevronDown } from "react-feather";
-import { useState } from "react";
+import type { SetStateAction } from "react";
 
-export default function Algorithms() {
-	let algorithmLocal = localStorage.getItem("algorithm");
+interface AlgorithmsProps {
+	algorithm: string;
+	setAlgorithm: React.Dispatch<SetStateAction<string>>;
+}
 
-	if (!algorithmLocal) {
-		algorithmLocal = "...";
-	}
-
-	const [algorithm, setAlgorithm] = useState<string>(algorithmLocal);
-
+export default function Algorithms({
+	algorithm,
+	setAlgorithm,
+}: AlgorithmsProps) {
 	function handleChange(e: string) {
 		setAlgorithm(e);
 		localStorage.setItem("algorithm", e);

@@ -1,15 +1,32 @@
 import styles from "../../styles/contiguous-memory-allocation.module.css";
 import Toast from "../toast";
 import { RotateCw, Play, FastForward } from "react-feather";
+import type { Process } from "../../types/process.model";
 import { useState } from "react";
 
-export default function Players() {
+interface PlayersProps {
+	algorithm: string;
+	parameters: {
+		memorySize: number;
+		compactionTime: number;
+		coalescingTime: number;
+	};
+	processes: Process[];
+}
+
+export default function Players({
+	algorithm,
+	parameters,
+	processes,
+}: PlayersProps) {
 	const [showToast, setShowToast] = useState(false);
 	const [toastMessage, setToastMessage] = useState("");
 
 	function handleClick(message: string) {
 		setShowToast(true);
-		setToastMessage(message);
+		setToastMessage(
+			message + algorithm + parameters.memorySize + processes[0].name,
+		);
 		setTimeout(() => {
 			setShowToast(false);
 		}, 3000);
