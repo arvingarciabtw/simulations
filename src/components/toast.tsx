@@ -1,11 +1,16 @@
 import styles from "../styles/toast.module.css";
 import { X } from "react-feather";
 
-export default function Toast({ children }: React.PropsWithChildren) {
+interface ToastProps {
+	children: React.ReactNode;
+	onHide(): void;
+}
+
+export default function Toast({ children, onHide }: ToastProps) {
 	return (
 		<div className={styles.toast}>
 			<div className={styles.content}>{children}</div>
-			<button className={styles.btnDelete}>
+			<button className={styles.btnDelete} onClick={onHide}>
 				<X />
 			</button>
 		</div>

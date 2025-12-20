@@ -70,6 +70,16 @@ function Main() {
 		size: +"",
 		time: +"",
 	});
+	const [isToastShown, setIsToastShown] = useState(false);
+	const [toastMessage, setToastMessage] = useState("");
+
+	function hideToast() {
+		setIsToastShown(false);
+	}
+
+	function showToast() {
+		setIsToastShown(true);
+	}
 
 	return (
 		<main className={`maxWidthWrapper ${styles.main}`}>
@@ -81,6 +91,13 @@ function Main() {
 					coalescingTime,
 				}}
 				processes={processes}
+				toast={{
+					isToastShown,
+					showToast,
+					hideToast,
+					toastMessage,
+					setToastMessage,
+				}}
 			/>
 			<Algorithms algorithm={algorithm} setAlgorithm={setAlgorithm} />
 			<Parameters

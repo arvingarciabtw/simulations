@@ -2,7 +2,7 @@ import styles from "../../styles/contiguous-memory-allocation.module.css";
 import Toast from "../toast";
 import { RotateCw, Play, FastForward } from "react-feather";
 import type { Process } from "../../types/process.model";
-import { useState } from "react";
+import type { SetStateAction } from "react";
 
 interface PlayersProps {
 	algorithm: string;
@@ -12,16 +12,21 @@ interface PlayersProps {
 		coalescingTime: number;
 	};
 	processes: Process[];
+	toast: {
+		isToastShown: boolean;
+		showToast(): void;
+		hideToast(): void;
+		toastMessage: string;
+		setToastMessage: React.Dispatch<SetStateAction<string>>;
+	};
 }
 
 export default function Players({
 	algorithm,
 	parameters,
 	processes,
+	toast,
 }: PlayersProps) {
-	const [showToast, setShowToast] = useState(false);
-	const [toastMessage, setToastMessage] = useState("");
-
 	function handleClick() {
 		const hasAlgorithm = algorithm !== "...";
 		const hasParameters =
@@ -30,17 +35,17 @@ export default function Players({
 			parameters.coalescingTime > 0;
 		const hasProcess = Boolean(processes.length > 0);
 
-		setShowToast(true);
+		toast.showToast();
 		if (hasAlgorithm && hasParameters && hasProcess) {
-			setToastMessage("Can be simulated!");
+			toast.setToastMessage(`Simulating with the ${algorithm} algorithm...`);
 		} else {
-			setToastMessage(
+			toast.setToastMessage(
 				"Make sure you have at least one process, and all inputs have valid values.",
 			);
 		}
 
 		setTimeout(() => {
-			setShowToast(false);
+			toast.hideToast();
 		}, 5000);
 	}
 
@@ -58,7 +63,9 @@ export default function Players({
 					<FastForward />
 				</button>
 			</div>
-			{showToast ? <Toast>{toastMessage}</Toast> : null}
+			{toast.isToastShown ? (
+				<Toast onHide={toast.hideToast}>{toast.toastMessage}</Toast>
+			) : null}
 		</section>
 	);
 }
